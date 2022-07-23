@@ -17,7 +17,7 @@ avalanche-lib == 0.1.0
 
 ## Data Preparation
 
-To download the datasets, please refer to https://github.com/ZhangYuanhan-AI/NOAH/#data-preparation (thanks [ZhangYuanhan-AI](https://github.com/ZhangYuanhan-AI) for their code). Then move the dataset folders to `./vtab/data`. 
+To download the datasets, please refer to https://github.com/ZhangYuanhan-AI/NOAH/#data-preparation (thank [ZhangYuanhan-AI](https://github.com/ZhangYuanhan-AI) for their code). Then move the dataset folders to `./vtab/data/`. 
 
 ## Usage
 ### Pretrained Model
@@ -58,7 +58,7 @@ python test.py --method convpass_attn --dataset <dataset-name>
 |Convpass| **76.56** |
 
 
-Checkpoints can be found [here](https://drive.google.com/file/d/19UjWeCuPTJG32RaVyOxV-EXFz-MYW8UT/view?usp=sharing).
+Checkpoints can be found [here](https://drive.google.com/file/d/19UjWeCuPTJG32RaVyOxV-EXFz-MYW8UT/view?usp=sharing). Extract `models.zip` to `./vtab/`.
 
 ## Citation
 ```
