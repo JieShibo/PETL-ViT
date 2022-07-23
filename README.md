@@ -28,14 +28,14 @@ Download the [pretrained ViT-B/16](https://storage.googleapis.com/vit_models/ima
 cd vtab
 bash run.sh
 ```
-Only the trainable parameters are saved (<2.5M/task).
+Only the trainable parameters are saved (1.4MB/task on average).
 
 ### Test
 ```sh
 python test.py --method convpass --dataset <dataset-name>
 python test.py --method convpass_attn --dataset <dataset-name>
 ```
-### Performance
+### Performance (seed = 42)
 | Natural | cifar | caltech101 | dtd | oxford_flowers102 | oxford_iiit_pet | svhn | sun397 | Average |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Convpass-attn | 71.84 | 90.62 | 71.97 | 99.06 | 90.98 | 89.93 | 54.25 | **81.24** |
