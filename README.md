@@ -4,6 +4,8 @@ Source code of "Convolutional Bypasses Are Better Vision Transformer Adapters"
 
 [arxiv](http://arxiv.org/abs/2207.07039) 2022/07
 
+![img](https://github.com/JieShibo/PETL-ViT/blob/main/img.pdf)
+
 ## Requirements
 Python == 3.8
 
