@@ -68,7 +68,7 @@ python test.py --method convpass_attn --dataset <dataset-name>
 |Convpass| **76.56** |
 
 
-Checkpoints can be found [here](https://drive.google.com/file/d/19UjWeCuPTJG32RaVyOxV-EXFz-MYW8UT/view?usp=sharing). Extract `models.zip` to `./vtab/`.
+Checkpoints can be found [here](https://1drv.ms/u/s!Akx_YVkY5X3fahpSZfJW3tPdRss?e=Gknjhf). Extract `models.zip` to `./vtab/`.
 
 ## Citation
 ```
