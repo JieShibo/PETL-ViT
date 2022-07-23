@@ -1,0 +1,4 @@
+name: oxford_flowers102
+class_num: 102
+scale: 1
+xavier_init: True

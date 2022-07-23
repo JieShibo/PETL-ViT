@@ -1,0 +1,4 @@
+name: dsprites_ori
+class_num: 16
+scale: 1
+xavier_init: True

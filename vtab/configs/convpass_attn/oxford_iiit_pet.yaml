@@ -1,0 +1,4 @@
+name: oxford_iiit_pet
+class_num: 37
+scale: 1
+xavier_init: True

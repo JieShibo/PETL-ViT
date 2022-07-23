@@ -1,0 +1,4 @@
+name: smallnorb_ele
+class_num: 9
+scale: 1
+xavier_init: True

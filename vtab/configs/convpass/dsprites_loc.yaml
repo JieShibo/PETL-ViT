@@ -1,0 +1,4 @@
+name: dsprites_loc
+class_num: 16
+scale: 100
+xavier_init: True

@@ -1,0 +1,4 @@
+name: diabetic_retinopathy
+class_num: 5
+scale: 1
+xavier_init: False
