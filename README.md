@@ -2,7 +2,7 @@
 
 Source code of "Convolutional Bypasses Are Better Vision Transformer Adapters" 
 
-[arxiv](http://arxiv.org/abs/2207.07039) 2022/07
+[Arxiv preprint 07/2022](http://arxiv.org/abs/2207.07039) 
 
 ![img](https://github.com/JieShibo/PETL-ViT/blob/main/img.PNG)
 
@@ -34,10 +34,11 @@ Only the trainable parameters are saved (1.4MB/task on average).
 
 ### Test
 ```sh
+cd vtab
 python test.py --method convpass --dataset <dataset-name>
 python test.py --method convpass_attn --dataset <dataset-name>
 ```
-### Performance (seed = 42)
+### Performance on VTAB-1k (seed = 42)
 | Natural | cifar | caltech101 | dtd | oxford_flowers102 | oxford_iiit_pet | svhn | sun397 | Average |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 |Full FT|68.9| 87.7| 64.3| 97.2| 86.9| 87.4| 38.8| **75.88** |
