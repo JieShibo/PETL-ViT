@@ -210,7 +210,7 @@ def set_Convpass(model, method, dim=8, s=1, xavier_init=False):
                 bound_method = forward_block_attn.__get__(_, _.__class__)
                 setattr(_, 'forward', bound_method)
             elif type(_) == timm.models.swin_transformer.SwinTransformerBlock:
-                _.adapter_attn = Convpass(dim, xavier_init, _.dim)
+                _.adapter_attn = Convpass_swin(dim, xavier_init, _.dim)
                 _.s = s
                 bound_method = forward_swin_block_attn.__get__(_, _.__class__)
                 setattr(_, 'forward', bound_method)
