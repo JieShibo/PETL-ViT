@@ -19,11 +19,11 @@ avalanche-lib == 0.1.0
 
 ## Data Preparation
 
-To download the datasets, please refer to https://github.com/ZhangYuanhan-AI/NOAH/#data-preparation (thank [ZhangYuanhan-AI](https://github.com/ZhangYuanhan-AI) for their code). Then move the dataset folders to `./vtab/data/`. 
+To download the datasets, please refer to https://github.com/ZhangYuanhan-AI/NOAH/#data-preparation (thank [ZhangYuanhan-AI](https://github.com/ZhangYuanhan-AI) for their code). Then move the dataset folders to `<YOUR PATH>/convpass/vtab/data/`. 
 
 ## Usage
 ### Pretrained Model
-Download the [pretrained ViT-B/16](https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz) to `./ViT-B_16.npz`
+Download the [pretrained ViT-B/16](https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz) to `<YOUR PATH>/convpass/ViT-B_16.npz`
 
 ### Train & Save
 ```sh
