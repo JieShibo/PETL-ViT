@@ -1,0 +1,4 @@
+class_num: 10
+name: svhn
+rank: 32
+scale: 100.0

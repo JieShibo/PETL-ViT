@@ -1,0 +1,4 @@
+class_num: 4
+name: kitti
+rank: 32
+scale: 10.0

@@ -1,0 +1,4 @@
+class_num: 100
+name: cifar
+rank: 8
+scale: 1.0

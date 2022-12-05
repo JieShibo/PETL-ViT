@@ -1,0 +1,4 @@
+class_num: 102
+name: caltech101
+rank: 32
+scale: 10.0

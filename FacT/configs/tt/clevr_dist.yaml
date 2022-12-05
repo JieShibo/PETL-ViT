@@ -1,0 +1,4 @@
+class_num: 6
+name: clevr_dist
+rank: 4
+scale: 10.0
