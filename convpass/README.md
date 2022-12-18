@@ -73,11 +73,11 @@ Checkpoints can be found [here](https://1drv.ms/u/s!Akx_YVkY5X3fahpSZfJW3tPdRss?
 
 ## Citation
 ```
-@inproceedings{jie2022convpass,
+@article{jie2022convpass,
       title={Convolutional Bypasses Are Better Vision Transformer Adapters}, 
       author={Shibo Jie and Zhi-Hong Deng},
+      journal={arXiv preprint arXiv:2207.07039},
       year={2022},
-      archivePrefix={arXiv},
 }
 ```
 
