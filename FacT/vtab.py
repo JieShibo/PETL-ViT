@@ -74,7 +74,7 @@ class ImageFilelist(data.Dataset):
 
 
 def get_data(name, evaluate=True, batch_size=64):
-    root = '../vtab-1k/' + name
+    root = './data/' + name
     transform = transforms.Compose([
         transforms.Resize((224, 224), interpolation=3),
         transforms.ToTensor(),

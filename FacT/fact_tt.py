@@ -160,8 +160,8 @@ def save(args, model, acc, ep):
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--dim', type=int, default=16)
-    parser.add_argument('--scale', type=float, default=1)
+    parser.add_argument('--dim', type=int, default=0)
+    parser.add_argument('--scale', type=float, default=0)
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--wd', type=float, default=1e-4)
     parser.add_argument('--model', type=str, default='vit_base_patch16_224_in21k')
@@ -172,9 +172,13 @@ if __name__ == '__main__':
     set_seed(seed)
     name = args.dataset
     args.best_acc = 0
-    vit = create_model(args.model, checkpoint_path='../ViT-B_16.npz', drop_path_rate=0.1)
+    vit = create_model(args.model, checkpoint_path='./ViT-B_16.npz', drop_path_rate=0.1)
     train_dl, test_dl = get_data(name)
-
+    config = get_config(name)
+    if args.dim == 0:
+        args.dim = config['rank']
+    if args.scale == 0:
+        args.scale = config['scale']
     set_FacT(vit, dim=args.dim, s=args.scale)
 
     trainable = []
@@ -192,4 +196,5 @@ if __name__ == '__main__':
     scheduler = CosineLRScheduler(opt, t_initial=100,
                                   warmup_t=10, lr_min=1e-5, warmup_lr_init=1e-6, decay_rate=0.1)
     vit = train(args, vit, train_dl, opt, scheduler, epoch=100)
-    print(args.best_acc)
+    print('acc1:', args.best_acc)
+

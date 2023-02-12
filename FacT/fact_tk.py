@@ -63,9 +63,9 @@ def fact_forward_attn(self, x):
 
     qkv = self.qkv(x)
 
-    q = vit.FacTb(self.dp(vit.FacTu(x) @ q_FacTc))
-    k = vit.FacTb(self.dp(vit.FacTu(x) @ k_FacTc))
-    v = vit.FacTb(self.dp(vit.FacTu(x) @ v_FacTc))
+    q = vit.FacTv(self.dp(vit.FacTu(x) @ q_FacTc))
+    k = vit.FacTv(self.dp(vit.FacTu(x) @ k_FacTc))
+    v = vit.FacTv(self.dp(vit.FacTu(x) @ v_FacTc))
     qkv += torch.cat([q, k, v], dim=2) * self.s
 
     qkv = qkv.reshape(B, N, 3,
@@ -80,7 +80,7 @@ def fact_forward_attn(self, x):
 
     x = (attn @ v).transpose(1, 2).reshape(B, N, C)
     proj = self.proj(x)
-    proj += vit.FacTb(self.dp(vit.FacTu(x) @ proj_FacTc)) * self.s
+    proj += vit.FacTv(self.dp(vit.FacTu(x) @ proj_FacTc)) * self.s
     x = self.proj_drop(proj)
     return x
 
@@ -91,14 +91,14 @@ def fact_forward_mlp(self, x):
     fc1_FacTc, fc2_FacTc = FacTc[:, :, :4].reshape(self.dim, self.dim * 4), FacTc[:, :, 4:].reshape(self.dim,
                                                                                                     self.dim * 4)
     h = self.fc1(x)  # B n 4c
-    h += vit.FacTb(self.dp(vit.FacTu(x) @ fc1_FacTc).reshape(
+    h += vit.FacTv(self.dp(vit.FacTu(x) @ fc1_FacTc).reshape(
         B, N, 4, self.dim)).reshape(
         B, N, 4 * C) * self.s
     x = self.act(h)
     x = self.drop(x)
     h = self.fc2(x)
     x = x.reshape(B, N, 4, C)
-    h += vit.FacTb(self.dp(vit.FacTu(x).reshape(
+    h += vit.FacTv(self.dp(vit.FacTu(x).reshape(
         B, N, 4 * self.dim) @ fc2_FacTc.t())) * self.s
     x = self.drop(h)
     return x
@@ -107,11 +107,11 @@ def fact_forward_mlp(self, x):
 def set_FacT(model, dim=8, s=1):
     if type(model) == timm.models.vision_transformer.VisionTransformer:
         model.FacTu = nn.Linear(768, dim, bias=False)
-        model.FacTb = nn.Linear(dim, 768, bias=False)
+        model.FacTv = nn.Linear(dim, 768, bias=False)
         model.FacTp = nn.Parameter(torch.zeros([dim, 144], dtype=torch.float), requires_grad=True)
         model.FacTc = nn.Parameter(torch.zeros([dim, dim, dim], dtype=torch.float), requires_grad=True)
 
-        nn.init.zeros_(model.FacTb.weight)
+        nn.init.zeros_(model.FacTv.weight)
         nn.init.xavier_uniform_(model.FacTc)
         nn.init.xavier_uniform_(model.FacTp)
         model.idx = 0
@@ -168,8 +168,8 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--seed', type=int, default=42)
 
-    parser.add_argument('--dim', type=int, default=32)
-    parser.add_argument('--scale', type=float, default=1)
+    parser.add_argument('--dim', type=int, default=0)
+    parser.add_argument('--scale', type=float, default=0)
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--wd', type=float, default=1e-4)
     parser.add_argument('--model', type=str, default='vit_base_patch16_224_in21k')
@@ -180,9 +180,13 @@ if __name__ == '__main__':
     set_seed(seed)
     name = args.dataset
     args.best_acc = 0
-    vit = create_model(args.model, checkpoint_path='../ViT-B_16.npz', drop_path_rate=0.1)
+    vit = create_model(args.model, checkpoint_path='./ViT-B_16.npz', drop_path_rate=0.1)
     train_dl, test_dl = get_data(name)
-
+    config = get_config(name)
+    if args.dim == 0:
+        args.dim = config['rank']
+    if args.scale == 0:
+        args.scale = config['scale']
     set_FacT(vit, dim=args.dim, s=args.scale)
 
     trainable = []
@@ -200,4 +204,4 @@ if __name__ == '__main__':
     scheduler = CosineLRScheduler(opt, t_initial=100,
                                   warmup_t=10, lr_min=1e-5, warmup_lr_init=1e-6, decay_rate=0.1)
     vit = train(args, vit, train_dl, opt, scheduler, epoch=100)
-    print(args.best_acc)
+    print('acc1:', args.best_acc)
