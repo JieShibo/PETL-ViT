@@ -34,7 +34,6 @@ bash run.sh
 @inproceedings{jie2023fact,
       title={FacT: Factor-Tuning For Lightweight Adaptation on Vision Transformer}, 
       author={Shibo Jie and Zhi-Hong Deng},
-      booktitle={AAAI Conference on Artificial Intelligence},
       booktitle={Proceedings of AAAI Conference on Artificial Intelligence (AAAI)},
       year={2023},
 }
