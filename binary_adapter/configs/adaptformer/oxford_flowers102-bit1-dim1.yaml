@@ -1,0 +1,7 @@
+backbone: vit_base_patch16_224_in21k
+bit: 1
+dataset: oxford_flowers102
+dim: 1
+method: adaptformer
+num_class: 102
+scale: 1.0

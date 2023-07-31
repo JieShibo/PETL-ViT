@@ -1,0 +1,7 @@
+backbone: vit_base_patch16_224_in21k
+bit: 1
+dataset: clevr_count
+dim: 1
+method: lora
+num_class: 8
+scale: 10.0

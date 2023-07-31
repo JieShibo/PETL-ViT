@@ -1,0 +1,7 @@
+backbone: vit_base_patch16_224_in21k
+bit: 1
+dataset: smallnorb_ele
+dim: 1
+method: lora
+num_class: 9
+scale: 100.0

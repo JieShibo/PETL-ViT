@@ -1,0 +1,7 @@
+backbone: vit_base_patch16_224_in21k
+bit: 1
+dataset: patch_camelyon
+dim: 1
+method: adaptformer
+num_class: 2
+scale: 10.0
