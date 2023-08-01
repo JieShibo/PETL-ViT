@@ -2,7 +2,7 @@
 
 Source code of "Revisiting the Parameter Efficiency of Adapters from the Perspective of Precision Redundancy".
 
-[ICCV 2023](https://arxiv.org/) 
+[ICCV 2023](https://arxiv.org/abs/2307.16867) 
 
 
 ## Requirements
