@@ -3,7 +3,7 @@
 Some exploration of *Parameter-Efficient Transfer Learning* in vision.
 
 + **Revisiting the Parameter Efficiency of Adapters from the Perspective of Precision Redundancy**
-    + \[ICCV 2023\] [![Arxiv link](https://img.shields.io/static/v1?label=arXiv&message=Binary_Adapter&color=red&logo=arxiv)](https://arxiv.org/)
+    + \[ICCV 2023\] [![Arxiv link](https://img.shields.io/static/v1?label=arXiv&message=Binary_Adapter&color=red&logo=arxiv)](https://arxiv.org/abs/2307.16867)
 [![Github link](https://img.shields.io/static/v1?label=GitHub&message=Binary_Adapter&color=black&logo=github)](https://github.com/JieShibo/PETL-ViT/tree/main/binary_adapter)
 
 
